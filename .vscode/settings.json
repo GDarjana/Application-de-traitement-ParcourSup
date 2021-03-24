@@ -1,0 +1,10 @@
+{
+    "python.pythonPath": "env/bin/python",
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint-flask",
+        "pylint-flask-sqlalchemy"
+    ],
+    "editor.suggest.showStatusBar": true
+}
+
