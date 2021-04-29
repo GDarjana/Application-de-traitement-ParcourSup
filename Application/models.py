@@ -29,6 +29,7 @@ class Content(db.Model):
         self.prenom = prenom
         self.nature = nature
 
+db.create_all()
 
 def init_db():
     db.drop_all()
@@ -38,3 +39,4 @@ def init_db():
     db.session.add(Content("Aouhh","Pas dpiece?",Nature['alien']))
     db.session.commit()
     lg.warning('Database initialized!')
+
