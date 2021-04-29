@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}   Home    {% endblock %}
+
+{% block content %}
+    <!--<script type=text/javascript>
+        $(function() {
+            $('a#calculate').bind('click', function() {
+            $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+                a: $('input[name="a"]').val(),
+                b: $('input[name="b"]').val()
+            }, function(data) {
+                $("#result").text(data.result);
+            });
+            return false;
+            });
+        });
+        </script>-->
+    <div id="more">
+        <a href=# id=test><input type=button name=test value="test"></a>
+    </div>
+    <script type=text/javascript>
+        $(function() {
+            $('a#test').bind('click', function(){
+                let body = document.querySelector('body');
+                var newDiv = document.createElement("div");
+                newDiv.innerHTML = "<select name='parametre' id='parametre'> <option value='solid'>Solid</option> <option value='dotted'>Dotted</option> <option value='inset'>Inset</option> <option value='outset'>Outset</option> <option value='dashed'>Dashed</option> <option value='ridge'>Ridge</option> <option value='groove'>Groove</option> <option value='hidden'>Hidden</option> <option value='none'>None</option> <option value='double'>Double</option> </select>";
+                var currentDiv = document.getElementById('more');
+                body.insertBefore(newDiv, currentDiv);
+            });
+        });
+        </script>
+{% endblock %}

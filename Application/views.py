@@ -1,4 +1,4 @@
-from flask import Flask , render_template , url_for, request
+from flask import Flask , render_template , url_for, request, jsonify
 from datetime import datetime
 
 
@@ -28,25 +28,16 @@ def get_data():
 # Replace the existing home function with the one below
 @app.route("/")
 def home():
-    return render_template("home.html",
-        name="Bernard",
-    )
+    return render_template("home.html")
 
     # New functions
 #Teste pour URL dynamiques
 
-@app.route("/about/")
-def about():
-    return render_template("about.html",
-        nature = request.args.get('nature'),
-        nom = request.args.get('nom'),
-        prenom = description_aleatoire(nature).prenom,
+@app.route("/parametre/")
+def parametre():
+    return render_template("parametre.html")
 
-    )
 
-@app.route("/contact/")
-def contact():
-    return render_template("contact.html")
 
 
 
