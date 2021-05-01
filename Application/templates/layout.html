@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css')}}" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     </head>
 
     <body>
@@ -12,13 +13,7 @@
             <a href="{{ url_for('listeCandidat') }}" class="navbar-item">Liste Complète</a>
         </div>
 
-        <div class="body-content">
-            {% block content %}
-            {% endblock %}
-            <hr/>
-            <footer>
-                <p>UNC 2021</p>
-            </footer>
-        </div>
-    </body>
+        {% block content %}
+        {% endblock %}
+</body>
 </html>
