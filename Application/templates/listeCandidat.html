@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}   Voici la liste de tous les étudiants   {% endblock %}
+
+{% block content %}
+    <p>Bienvenue sur la page répertoriant tous les étudiants</p>
+    <h1>{{ fichier_csv }}</h1>
+    <table border=2>
+        {% for key,value in dico.items() %}
+        <tr>
+            <td>
+                <p>{{ key }}<p>
+            </td>
+            <td>
+                <p>{{ value }}</p>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

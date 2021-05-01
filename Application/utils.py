@@ -1,7 +1,7 @@
 import random
 
-from Application.models import Content, Nature
+from Application.models import Content,Dictionnaire
 
-def description_aleatoire(nature):
-    contenu = Content.query.filter(Content.nature == Nature[nature]).all()
-    return random.choice(contenu)
+def find_nom(ine):
+    res = Content.query.filter_by(ine=ine).first()
+    return res

@@ -5,6 +5,7 @@
         "pylint-flask",
         "pylint-flask-sqlalchemy"
     ],
-    "editor.suggest.showStatusBar": true
+    "editor.suggest.showStatusBar": true,
+    "git.ignoreLimitWarning": true
 }
 

@@ -2,5 +2,15 @@
 {% block title %}   Home    {% endblock %}
 
 {% block content %}
-    <p>Home page for the Visual Studio Code Flask tutorial.</p>
+    {{ dropzone.load_css()}}
+    {{ dropzone.style('border:2px dashed #0087F7; margin: 10%; min_height: 400px;' )}}
+    {{ dropzone.create(action="home")}}
+    <h1>Uploader le fichier csv</h1>
+    <p>{{ message }}</p>
+    <form method = "POST" enctype="multipart/form-data">
+        <input type ="file" name = "file"/>
+        <input type = "submit" value = "Envoyer"/>
+    </form>
+    {{ dropzone.config() }}
+    {{ dropzone.load_js() }}
 {% endblock %}
