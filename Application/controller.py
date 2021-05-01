@@ -50,7 +50,7 @@ def home():
         filename = secure_filename(file.filename)
         path = os.getcwd()
         file.save(os.path.join(path,file.filename))
-        data = pd.read_csv(path+"\\"+filename)
+        data = pd.read_csv(os.path.join(path,file.filename))
         dico = {}
         for elem in data.id:
             dico[elem] = "test"
