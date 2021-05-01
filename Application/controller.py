@@ -50,10 +50,12 @@ def home():
         filename = secure_filename(file.filename)
         path = os.getcwd()
         file.save(os.path.join(path,file.filename))
-        data = pd.read_csv(os.path.join(path,file.filename))
+        data = pd.read_csv(os.path.join(path,file.filename), sep = ";")
         dico = {}
-        for elem in data.id:
-            dico[elem] = "test"
+        i=0
+        for elem in data.Numéro:
+            dico[elem] = data.Nom[i]
+            i+=1
         return render_template("listeCandidat.html", fichier_csv = filename , dico = dico)
     return render_template("home.html", message="Pas de fichier CSV")
 
