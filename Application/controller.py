@@ -1,7 +1,6 @@
 from flask import Flask , render_template , url_for, request, redirect , send_from_directory , session
 from datetime import datetime
 from werkzeug.utils import secure_filename
-import re
 import os
 
 from io import TextIOWrapper
@@ -14,28 +13,8 @@ from .utils import bilan_total_scientifique,dico_final
 SESSION_TYPE = 'redis'
 app.config['SECRET_KEY']='secret_key'
 
-
-
-
-
-#Dropzone upload
-from flask_dropzone import Dropzone
-app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
-app.config['DROPZONE_ALLOWED_FILE_TYPE'] = '.csv'
-
-
-app.config.from_object('config')
-app.config["DEBUG"] = True
-dropzone = Dropzone(app)
-
-#Dossier upload
-#Au préalable àvoir un dossier upload dans le dossier Application
-UPLOAD_FOLDER = '/upload/'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 #Module csv
 import pandas as pd
-import csv
 from pandas import DataFrame,read_csv
 
 
