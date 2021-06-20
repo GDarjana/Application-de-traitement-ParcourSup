@@ -43,7 +43,7 @@ Installation de la dernière version de Panda
   - Fichier textuel
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-pip install panda
+pip install pandas
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Installation de la dernière version de Werkzeug
