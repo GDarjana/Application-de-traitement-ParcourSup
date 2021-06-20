@@ -1,4 +1,3 @@
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Application-de-traitement-ParcourSup
 
 Application traitant les demandes ParcourSup 
@@ -17,6 +16,7 @@ python3 -m venv env
 python -m venv env
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Installation de la dernère version de Python
 - Langage de programmation interprété
   - Dernière version 3.9.5 (3 mai 2021)
@@ -51,3 +51,5 @@ Installation de la dernière version de Werkzeug
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 pip install -U Werkzeug
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
