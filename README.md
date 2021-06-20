@@ -4,6 +4,8 @@ Application traitant les demandes ParcourSup
 
 Création de l'environnement de travail:
 
+(En fonction de la version de python installé, la commande python peut varier en py)
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Linux
 sudo apt-get install python3-venv    
