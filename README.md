@@ -18,7 +18,14 @@ python3 -m venv env
 python -m venv env
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Activation de l'environnement de travail:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# macOS / Linux
+source env/bin/activate
 
+# Windows
+.\env\Scripts\activate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Installation de la dernère version de Python
 - Langage de programmation interprété
   - Dernière version 3.9.5 (3 mai 2021)
@@ -54,4 +61,9 @@ Installation de la dernière version de Werkzeug
 
 pip install -U Werkzeug
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Désactivation de l'environnement de travail:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# macOS / Linux / Windows
+deactivate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
