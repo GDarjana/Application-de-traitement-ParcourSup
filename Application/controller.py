@@ -144,8 +144,8 @@ def resultat():
             poidsClassementSVT = 2
         
         bilan_total_scientifique(listeMatiere, poidsNoteMath, poidsClassementMath, poidsNotePC, poidsClassementPC, poidsNoteSVT, poidsClassementSVT, bac, fichier)
-        data = pd.read_csv("res_mat_scientifique.csv",sep = ";")
-        dico = dico_final("res_mat_scientifique.csv")
+        data = pd.read_csv("fichier_traite.csv",sep = ";")
+        dico = dico_final("fichier_traite.csv")
         liste_colonnes = data.columns.tolist()
         return render_template("resultat.html" , fichier_csv = session.get('fichier_csv') ,liste_colonnes = liste_colonnes ,dico = dico)
     return render_template("resultat.html", dico = {})

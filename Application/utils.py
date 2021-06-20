@@ -1,4 +1,3 @@
-import random
 import pandas as pd
 import csv
 
@@ -7,7 +6,7 @@ from pandas.core.dtypes.missing import isna
 
 def prio_bac(bac, nom_fichier):
     data = pd.read_csv(nom_fichier, sep = ";")
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
+    data_fin = pd.read_csv("fichier_traite.csv", sep = ";")
     data.columns = data.columns.str.replace(' ', '') 
     data.columns = data.columns.str.replace('(', '') 
     data.columns = data.columns.str.replace(')', '') 
@@ -47,12 +46,12 @@ def prio_bac(bac, nom_fichier):
                     dico[elem] = 0
             i+=1
     data_fin['Série (code)'] = data_fin['Numéro INE'].map(dico)
-    data_fin.to_csv("res_mat_scientifique.csv", sep = ";", index = False)
+    data_fin.to_csv("fichier_traite.csv", sep = ";", index = False)
     return dico
 
 def bilan_appreciation_scientifique(nom_fichier) :
     data = pd.read_csv(nom_fichier,sep = ";")
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
+    data_fin = pd.read_csv("fichier_traite.csv", sep = ";")
     data = data.fillna(0)
     data.columns = data.columns.str.replace(' ', '') 
     data.columns = data.columns.str.replace('(', '') 
@@ -80,12 +79,12 @@ def bilan_appreciation_scientifique(nom_fichier) :
     data_fin["Capacité à s'investir"] = data_fin['Numéro INE'].map(capacite_investir)
     data_fin["Avis sur la capacité à réussir"] = data_fin['Numéro INE'].map(avis_capacite_reussi_inv)
     data_fin['Bilan appréciation'] = data_fin['Numéro INE'].map(bilan)
-    data_fin.to_csv("res_mat_scientifique.csv", sep = ";", index = False)
+    data_fin.to_csv("fichier_traite.csv", sep = ";", index = False)
     return bilan
 
 def niv_classe_scientifique(nom_fichier):
     data = pd.read_csv(nom_fichier,sep = ";")
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
+    data_fin = pd.read_csv("fichier_traite.csv", sep = ";")
     data.columns = data.columns.str.replace(' ', '') 
     niv = {}
     i = 0
@@ -101,13 +100,13 @@ def niv_classe_scientifique(nom_fichier):
                 niv[elem] = 0
         i+=1
     data_fin['Bonus'] = data_fin['Numéro INE'].map(niv)
-    data_fin.to_csv("res_mat_scientifique.csv", sep = ";", index = False)
+    data_fin.to_csv("fichier_traite.csv", sep = ";", index = False)
     return niv
 
 def math_premiere(poidsNoteMath, poidsClassementMath, nom_fichier):
     data = pd.read_csv(nom_fichier,sep = ";", mangle_dupe_cols = True)
     data = data.fillna(0)
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
+    data_fin = pd.read_csv("fichier_traite.csv", sep = ";")
     data.columns = data.columns.str.replace(' ', '') 
     data.columns = data.columns.str.replace('.', '_') 
     moy_eleve_trim1 = {}
@@ -166,13 +165,13 @@ def math_premiere(poidsNoteMath, poidsClassementMath, nom_fichier):
     data_fin['Moyenne classe en math (1ère)'] = data_fin['Numéro INE'].map(moy_classe)
     data_fin['∆ Classe Math (1ère)'] = data_fin['Numéro INE'].map(delta)
     data_fin['Points Math'] = data_fin['Numéro INE'].map(score)
-    data_fin.to_csv("res_mat_scientifique.csv", sep = ";", index = False)
+    data_fin.to_csv("fichier_traite.csv", sep = ";", index = False)
     return score
 
 def PC_premiere(poidsNotePC, poidsClassementPC, nom_fichier):
     data = pd.read_csv(nom_fichier,sep = ";", mangle_dupe_cols = True)
     data = data.fillna(0)
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
+    data_fin = pd.read_csv("fichier_traite.csv", sep = ";")
     data.columns = data.columns.str.replace(' ', '') 
     data.columns = data.columns.str.replace('.', '_') 
     data.columns = data.columns.str.replace('/', '') 
@@ -232,13 +231,13 @@ def PC_premiere(poidsNotePC, poidsClassementPC, nom_fichier):
     data_fin['Moyenne classe en Physique/Chimie (1ère)'] = data_fin['Numéro INE'].map(moy_classe)
     data_fin['∆ Classe Physique/Chimie (1ère)'] = data_fin['Numéro INE'].map(delta)
     data_fin['Points Physique/Chimie'] = data_fin['Numéro INE'].map(score)
-    data_fin.to_csv("res_mat_scientifique.csv", sep = ";", index = False)
+    data_fin.to_csv("fichier_traite.csv", sep = ";", index = False)
     return score
 
 def SVT_premiere(poidsNoteSVT, poidsClassementSVT, nom_fichier):
     data = pd.read_csv(nom_fichier,sep = ";", mangle_dupe_cols = True)
     data = data.fillna(0)
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
+    data_fin = pd.read_csv("fichier_traite.csv", sep = ";")
     data.columns = data.columns.str.replace(' ', '') 
     data.columns = data.columns.str.replace('.', '_') 
     moy_eleve_trim1 = {}
@@ -296,7 +295,7 @@ def SVT_premiere(poidsNoteSVT, poidsClassementSVT, nom_fichier):
     data_fin['Moyenne classe en SVT (1ère)'] = data_fin['Numéro INE'].map(moy_classe)
     data_fin['∆ Classe SVT (1ère)'] = data_fin['Numéro INE'].map(delta)
     data_fin['Points SVT'] = data_fin['Numéro INE'].map(score)
-    data_fin.to_csv("res_mat_scientifique.csv", sep = ";", index = False)
+    data_fin.to_csv("fichier_traite.csv", sep = ";", index = False)
     return score
 
 def total_premiere_scientifique(listeMatiere, poidsNoteMath, poidsClassementMath, poidsNotePC, poidsClassementPC, poidsNoteSVT, poidsClassementSVT, fichier):
@@ -326,7 +325,7 @@ def total_premiere_scientifique(listeMatiere, poidsNoteMath, poidsClassementMath
 def math_terminal(poidsNoteMath, poidsClassementMath, nom_fichier):
     data = pd.read_csv(nom_fichier,sep = ";")
     data = data.fillna(0)
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
+    data_fin = pd.read_csv("fichier_traite.csv", sep = ";")
     data.columns = data.columns.str.replace(' ', '')
     data.columns = data.columns.str.replace('(', '')
     data.columns = data.columns.str.replace(')', '')
@@ -370,13 +369,13 @@ def math_terminal(poidsNoteMath, poidsClassementMath, nom_fichier):
     data_fin['∆ Classe Math'] = data_fin['Numéro INE'].map(delta)
     data_fin['Point rang (Mathématiques)'] = data_fin['Numéro INE'].map(point_rang)
     data_fin['Math Terminale'] = data_fin['Numéro INE'].map(score)
-    data_fin.to_csv("res_mat_scientifique.csv", sep = ";", index = False)
+    data_fin.to_csv("fichier_traite.csv", sep = ";", index = False)
     return score
 
 def pc_terminal(poidsNotePC, poidsClassementPC, nom_fichier):
     data = pd.read_csv(nom_fichier,sep = ";")
     data = data.fillna(0)
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
+    data_fin = pd.read_csv("fichier_traite.csv", sep = ";")
     data.columns = data.columns.str.replace(' ', '')
     data.columns = data.columns.str.replace('(', '')
     data.columns = data.columns.str.replace(')', '')
@@ -420,13 +419,13 @@ def pc_terminal(poidsNotePC, poidsClassementPC, nom_fichier):
     data_fin['∆ Classe Physique/Chimie'] = data_fin['Numéro INE'].map(delta)
     data_fin['Point rang (Physique/Chimie)'] = data_fin['Numéro INE'].map(point_rang)
     data_fin['Physique/Chimie Terminale'] = data_fin['Numéro INE'].map(score)
-    data_fin.to_csv("res_mat_scientifique.csv", sep = ";", index = False)
+    data_fin.to_csv("fichier_traite.csv", sep = ";", index = False)
     return score
 
 def svt_terminal(poidsNoteSVT, poidsClassementSVT, nom_fichier):
     data = pd.read_csv(nom_fichier,sep = ";")
     data = data.fillna(0)
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
+    data_fin = pd.read_csv("fichier_traite.csv", sep = ";")
     data.columns = data.columns.str.replace(' ', '')
     data.columns = data.columns.str.replace('(', '')
     data.columns = data.columns.str.replace(')', '')
@@ -470,7 +469,7 @@ def svt_terminal(poidsNoteSVT, poidsClassementSVT, nom_fichier):
     data_fin['∆ Classe SVT'] = data_fin['Numéro INE'].map(delta)
     data_fin['Point rang (SVT)'] = data_fin['Numéro INE'].map(point_rang)
     data_fin['SVT Terminale'] = data_fin['Numéro INE'].map(score)
-    data_fin.to_csv("res_mat_scientifique.csv", sep = ";", index = False)
+    data_fin.to_csv("fichier_traite.csv", sep = ";", index = False)
     return score
 
 def total_terminale_scientifique(listeMatiere, poidsNoteMath, poidsClassementMath, poidsNotePC, poidsClassementPC, poidsNoteSVT, poidsClassementSVT, fichier):
@@ -499,7 +498,7 @@ def total_terminale_scientifique(listeMatiere, poidsNoteMath, poidsClassementMat
 
 def note_bac_prem_scientifique(nom_fichier):
     data = pd.read_csv(nom_fichier,sep = ";", mangle_dupe_cols = True)
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
+    data_fin = pd.read_csv("fichier_traite.csv", sep = ";")
     data = data.fillna(0)
     data.columns = data.columns.str.replace(' ', '') 
     data.columns = data.columns.str.replace('(', '') 
@@ -520,17 +519,16 @@ def note_bac_prem_scientifique(nom_fichier):
     data_fin['Français Oral Bac'] = data_fin['Numéro INE'].map(oral_fr)
     data_fin['Français Ecrit Bac'] = data_fin['Numéro INE'].map(ecrit_fr)
     data_fin['TPE'] = data_fin['Numéro INE'].map(tpe)
-    data_fin.to_csv("res_mat_scientifique.csv", sep = ";", index = False)
+    data_fin.to_csv("fichier_traite.csv", sep = ";", index = False)
     return total
 
 def bilan_total_scientifique(listeMatiere, poidsNoteMath, poidsClassementMath, poidsNotePC, poidsClassementPC, poidsNoteSVT, poidsClassementSVT, bac, nom_fichier):
     data = pd.read_csv(nom_fichier,sep = ";")
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
     data = data.fillna(0)
     data.columns = data.columns.str.replace(' ', '')
     data.columns = data.columns.str.replace('(', '') 
     data.columns = data.columns.str.replace(')', '')
-    with open('res_mat_scientifique.csv', 'w', encoding='utf-8') as file:
+    with open('fichier_traite.csv', 'w', encoding='utf-8') as file:
         writer = csv.writer(file,delimiter=';')
         writer.writerow(('Numéro INE', 'Nom', 'Lycée', 'Bac'))
         i = 0
@@ -552,10 +550,10 @@ def bilan_total_scientifique(listeMatiere, poidsNoteMath, poidsClassementMath, p
         score_term[key] = round((note_bac_premiere[key]/2) + total_moy_ter[key], 2)
         total_term[key] = round(score_term[key] + bilan_apprec[key] + points_bac[key], 2)
         score_finale[key] = round((total_term[key] + (total_prem[key]/2)) + bonus_classe[key], 2)
-    data_fin = pd.read_csv("res_mat_scientifique.csv", sep = ";")
+    data_fin = pd.read_csv("fichier_traite.csv", sep = ";")
     data_fin['Total terminale'] = data_fin['Numéro INE'].map(total_term)
     data_fin['Bilan Total'] = data_fin['Numéro INE'].map(score_finale)
-    data_fin.to_csv("res_mat_scientifique.csv", sep = ";", index = False)
+    data_fin.to_csv("fichier_traite.csv", sep = ";", index = False)
     return score_finale
 
 def dico_final(nom_fichier):
