@@ -1,32 +1,71 @@
 {% extends "layout.html" %}
 {% block title %}   Home    {% endblock %}
 
+{%block externalFile%}
+<link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='styles/parametre.css') }}" />
+<script type="text/javascript" src="{{ url_for('static', filename='js/parametre.js') }}" async></script>
+{% endblock %}
+
 {% block content %}
-    <!--<script type=text/javascript>
-        $(function() {
-            $('a#calculate').bind('click', function() {
-            $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
-                a: $('input[name="a"]').val(),
-                b: $('input[name="b"]').val()
-            }, function(data) {
-                $("#result").text(data.result);
-            });
-            return false;
-            });
-        });
-        </script>-->
-    <div id="more">
-        <a href=# id=test><input type=button name=test value="test"></a>
-    </div>
-    <script type=text/javascript>
-        $(function() {
-            $('a#test').bind('click', function(){
-                let body = document.querySelector('body');
-                var newDiv = document.createElement("div");
-                newDiv.innerHTML = "<select name='parametre' id='parametre'> <option value='solid'>Solid</option> <option value='dotted'>Dotted</option> <option value='inset'>Inset</option> <option value='outset'>Outset</option> <option value='dashed'>Dashed</option> <option value='ridge'>Ridge</option> <option value='groove'>Groove</option> <option value='hidden'>Hidden</option> <option value='none'>None</option> <option value='double'>Double</option> </select>";
-                var currentDiv = document.getElementById('more');
-                body.insertBefore(newDiv, currentDiv);
-            });
-        });
-        </script>
+<div class="centered">
+    <h1>Sélectionnez vos critères de sélection</h1>
+    <h2>Veuillez entrer le poids, correspondant au coefficient du paramètre</h2>
+    <form method = "POST" action = "{{ url_for('resultat') }}" id = "param">
+        <div>
+            <label for="Math">Mathématique : </label>
+            <input type="checkbox" id="Math" name="Math" value="Math">
+        </div>
+        <div>
+            <label for="poidsNoteMath">Poids de la note de mathématique : </label>
+            <input type="text" id="poidsNoteMath" name="poidsNoteMath" placeholder="3 (par défaut)" readonly onkeypress='validate(event)'>
+        </div>
+        <div>
+            <label for="poidsClassementMath">Poids du classement en mathématique : </label>
+            <input type="text" id="poidsClassementMath" name="poidsClassementMath" placeholder="2 (par défaut)" readonly onkeypress='validate(event)'>
+        </div>
+
+        <br><br>
+
+        <div>
+            <label for="PC">Physique/Chimie : </label>
+            <input type="checkbox" id="PC" name="PC" value="PC">
+        </div>
+        <div>
+            <label for="poidsNotePC">Poids de la note de Physique/Chimie : </label>
+            <input type="text" id="poidsNotePC" name="poidsNotePC" placeholder="3 (par défaut)" readonly onkeypress='validate(event)'>
+        </div>
+        <div>
+            <label for="poidsClassementPC">Poids du classement en Physique/Chimie : </label>
+            <input type="text" id="poidsClassementPC" name="poidsClassementPC" placeholder="2 (par défaut)" readonly onkeypress='validate(event)'>
+        </div>
+
+        <br><br>
+
+        <div>
+            <label for="SVT">Sciences de la Vie et de la Terre : </label>
+            <input type="checkbox" id="SVT" name="SVT" value="SVT">
+        </div>
+        <div>
+            <label for="poidsNoteSVT">Poids de la note de SVT : </label>
+            <input type="text" id="poidsNoteSVT" name="poidsNoteSVT" placeholder="3 (par défaut)" readonly onkeypress='validate(event)'>
+        </div>
+        <div>
+            <label for="poidsClassementSVT">Poids du classement en SVT : </label>
+            <input type="text" id="poidsClassementSVT" name="poidsClassementSVT" placeholder="2 (par défaut)" readonly onkeypress='validate(event)'>
+        </div>
+
+        <br><br>
+
+        <div>
+            <label for="Bac">Bac à privilégier : </label>
+            <select name="Bac" id="Bac">
+                <option value="S">Scientifique</option>
+                <option value="L">Littéraire</option>
+                <option value="ES">Economie et social</option>
+                <option value="autres">Autres</option>
+            </select>
+        </div>
+        <input type = "submit" value = "Confirmer"/>
+    </form>
+</div>
 {% endblock %}

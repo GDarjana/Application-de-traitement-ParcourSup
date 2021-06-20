@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %}   Voici la liste de tous les étudiants   {% endblock %}
+
+{%block externalFile%}
+<link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='styles/resultat.css') }}" />
+<script type="text/javascript" src="{{ url_for('static', filename='js/resultat.js') }}" defer></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js" defer></script>
+{% endblock %}
+
+{% block content %}
+<img src="/static/img/Logo_unc.jpeg" alt="Logo de l'université de la Nouvelle-Calédonie">
+<p>Page répertoriant les étudiants</p>
+<form action = "{{ url_for('parametre') }}">
+    <input type = "submit" value = "Revenir sur les paramètres"/>
+</form>
+<h1>{{ fichier_csv }} Traité</h1>
+<table id = "tableau" >
+    <thead>
+        <tr>
+        {% for elem in liste_colonnes %}
+            {%if '∆' in elem and '(1ère)' in elem%}
+            <th data-toggle="tooltip" title="Moyenne candidat - Moyenne Classe">
+                {{ elem }}
+            </th>
+            {%elif '∆' in elem %}
+            <th data-toggle="tooltip" title="Note étudiant - Moyenne Classe">
+                {{ elem }}
+            </th>
+            {%elif 'Point rang' in elem %}
+            <th data-toggle="tooltip" title="30 - Classement de l'étudiant dans cette matière">
+                {{ elem }}
+            </th>
+            {% else %}
+            <th>
+                {{ elem }}
+            </th>
+            {% endif %}
+        {% endfor %}
+        </tr>
+    </thead>
+    <tbody >
+        {% for key,value in dico.items() %}
+        <tr>
+            <td>
+                <p>{{key}}<p>
+            </td>
+            {% for donnee in value %}
+                <td>
+                    <p>{{ donnee }} </p>
+                </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+<form action = "{{ url_for('parametre') }}">
+    <input type = "submit" value = "Revenir sur les paramètres"/>
+</form>
+{% endblock %}
+
+
+

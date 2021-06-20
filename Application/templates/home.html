@@ -1,17 +1,17 @@
 {% extends "layout.html" %}
 {% block title %}   Home    {% endblock %}
 
+{%block externalFile%}
+<link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='styles/home.css') }}" />
+{% endblock %}
+
 {% block content %}
-    {{ dropzone.load_css()}}
-    {{ dropzone.style('border:2px dashed #0087F7; margin: 10%; min_height: 400px;' )}}
-    {{ dropzone.create(action="home")}}
-    <h1>Uploader le fichier csv</h1>
-    <p>{{ message }}</p>
-    <a href="{{ url_for('parametre') }}" class="navbar-item">Paramètre</a>
+<div class="container">
+    <img src="/static/img/Logo_unc.jpeg" alt="Logo de l'université de la Nouvelle-Calédonie" width="200" height="200">
+    <p>Veuillez sélectionner le fichier .csv à traiter.</p>
     <form method = "POST" enctype="multipart/form-data">
         <input type ="file" name = "file"/>
-        <input type = "submit" value = "Envoyer"/>
+        <input type = "submit" value = "Confirmer"/>
     </form>
-    {{ dropzone.config() }}
-    {{ dropzone.load_js() }}
+</div>
 {% endblock %}

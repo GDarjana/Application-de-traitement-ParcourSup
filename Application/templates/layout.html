@@ -3,17 +3,11 @@
     <head>
         <meta charset="utf-8" />
         <title>{% block title %}{% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css')}}" />
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        {% block externalFile %}{% endblock%}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" async></script>    
     </head>
-
     <body>
-        <p class="message">Coucou {{ name }} vous êtes sur notre site</p>
-        <div class="navbar">
-            <a href="{{ url_for('listeCandidat') }}" class="navbar-item">Liste Complète</a>
-        </div>
-
         {% block content %}
         {% endblock %}
-</body>
+    </body>
 </html>
