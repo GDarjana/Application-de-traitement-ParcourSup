@@ -38,7 +38,7 @@ Installation de la dernière version de Panda
 - Manipulation d'objet de type DataFrame
   - Fichier csv
   - Fichier excel
-  - Fichier textuels
+  - Fichier textuel
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 pip install panda
