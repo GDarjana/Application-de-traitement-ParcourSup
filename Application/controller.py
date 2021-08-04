@@ -41,16 +41,6 @@ def home():
         path = os.getcwd()
         file.save(os.path.join(path,file.filename))
         session['file_is_uploaded'] = True 
-        """ Création de la base de données """
-        """"
-        file = TextIOWrapper(file,encoding='UTF-8')
-        for row in data:
-            INE = Math(Moyenne_candidat_en_Mathématiques_Trimestre_1=row['MoyennecandidatenMathématiquesTrimestre1'], Moyenne_classe_en_Mathématiques_Trimestre_1=row['MoyenneclasseenMathématiquesTrimestre1'],Classement_Mathématiques=row['ClassementMathématiques'])
-            db.session.add(INE)
-            db.session.commit()
-        
-        INE.query.all()
-        """
         return render_template("parametre.html", fichier_csv = session.get('fichier_csv'))
     return render_template("home.html", message="Pas de fichier CSV")
 
